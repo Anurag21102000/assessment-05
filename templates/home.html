@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Blog Posts</h2>
+    {% if posts %}
+        <ul>
+            {% for post_id, post in posts.items() %}
+                <li>
+                    <h3><a href="{{ url_for('view_post', post_id=post_id) }}">{{ post.title }}</a></h3>
+                    <p>By {{ post.author }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts available.</p>
+    {% endif %}
+{% endblock %}
